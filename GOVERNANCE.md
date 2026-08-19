@@ -24,6 +24,10 @@ No company may hold more than two seats. Memova has no permanent seat or veto.
 
 Before the first elected TSC, initiating maintainers may merge changes that follow the public process. Interim authority ends when the TSC is seated or twelve months after the first public draft, whichever comes first.
 
+## Incubation and neutral transfer
+
+The initial public repository may be hosted under the initiating maintainer's GitHub account while the neutral organization is established. This hosting arrangement does not grant permanent protocol control. The repository SHOULD be transferred to a vendor-neutral organization after a second independent owner and the initial TSC process are ready. The transfer MUST preserve history, releases, issues, discussions, security records, and public redirects.
+
 ## Sponsor independence
 
 Funding may support implementation, research, meetings, or audits. It does not grant votes, conformance status, certification, or control over the roadmap.
