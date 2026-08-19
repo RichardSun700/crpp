@@ -1,0 +1,19 @@
+{
+  "schema": "portable-projection",
+  "expected_rule_id": "CRPP-PROJECTION-004",
+  "data": {
+    "projection_id": "projection_synthetic_invalid_001",
+    "protocol_version": "0.1.0-draft.1",
+    "beneficiary_id": "actor_alex",
+    "capability_category": "decision-checklist",
+    "content": "A supposed capability containing SYNTHETIC-SECRET.",
+    "source_commitment": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "generated_at": "2026-08-19T00:01:00Z",
+    "policy_version": "projection-policy-0.1",
+    "state": "approved",
+    "checks": [
+      { "check_id": "secrets", "status": "fail" }
+    ],
+    "allowed_operations": ["read"]
+  }
+}

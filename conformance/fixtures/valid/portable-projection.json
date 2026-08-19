@@ -1,0 +1,22 @@
+{
+  "schema": "portable-projection",
+  "expected_rule_ids": ["CRPP-PROJECTION-001", "CRPP-PROJECTION-003"],
+  "data": {
+    "projection_id": "projection_synthetic_001",
+    "protocol_version": "0.1.0-draft.1",
+    "beneficiary_id": "actor_alex",
+    "capability_category": "decision-checklist",
+    "content": "Compare assumptions, evidence, reversibility, and affected actors before selecting an option.",
+    "source_commitment": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "generated_at": "2026-08-19T00:01:00Z",
+    "policy_version": "projection-policy-0.1",
+    "state": "approved",
+    "checks": [
+      { "check_id": "direct-identifiers", "status": "pass" },
+      { "check_id": "secrets", "status": "pass" },
+      { "check_id": "unique-events", "status": "pass" },
+      { "check_id": "semantic-risk", "status": "pass" }
+    ],
+    "allowed_operations": ["read", "invoke"]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "context-agreement",
+  "expected_rule_ids": ["CRPP-AGREEMENT-001", "CRPP-AGREEMENT-003"],
+  "data": {
+    "agreement_id": "agr_synthetic_joint_001",
+    "protocol_version": "0.1.0-draft.1",
+    "project_id": "project_synthetic_orchard",
+    "participants": [
+      { "actor_id": "actor_alex", "actor_type": "person" },
+      { "actor_id": "actor_blair", "actor_type": "person" },
+      { "actor_id": "org_example", "actor_type": "organization" }
+    ],
+    "purposes": ["synthetic-product-research"],
+    "effective_at": "2026-08-19T00:00:00Z",
+    "operations": ["read", "project", "invoke"],
+    "default_domains": ["company", "personal", "joint", "third_party"],
+    "signatures": [
+      { "signer_id": "actor_alex", "method": "synthetic-signature", "value": "sig_alex" },
+      { "signer_id": "actor_blair", "method": "synthetic-signature", "value": "sig_blair" }
+    ]
+  }
+}

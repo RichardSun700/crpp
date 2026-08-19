@@ -1,0 +1,123 @@
+[
+  {
+    "id": "no-agreement-own-separable-contribution",
+    "input": {
+      "agreement": null,
+      "requester_id": "actor_alex",
+      "operation": "copy",
+      "context_kind": "separable_contribution",
+      "contributors": ["actor_alex"]
+    },
+    "expected": { "decision": "allow", "rule_ids": ["CRPP-DEFAULT-002"] }
+  },
+  {
+    "id": "main-contributor-cannot-copy-joint-raw-context",
+    "input": {
+      "agreement": null,
+      "requester_id": "actor_alex",
+      "operation": "copy",
+      "context_kind": "joint",
+      "contributors": ["actor_alex", "actor_blair"],
+      "claimed_primary_contributor": "actor_alex"
+    },
+    "expected": { "decision": "deny", "rule_ids": ["CRPP-DEFAULT-004"] }
+  },
+  {
+    "id": "failed-projection-enters-quarantine",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "project",
+      "context_kind": "projection",
+      "projection_checks": ["pass", "fail", "pass"],
+      "candidate_content": "SYNTHETIC-SECRET"
+    },
+    "expected": { "decision": "quarantine", "rule_ids": ["CRPP-PROJECTION-004"] }
+  },
+  {
+    "id": "majority-cannot-expose-minority-sensitive-contribution",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "copy",
+      "context_kind": "joint",
+      "affected_contributors": ["actor_alex", "actor_blair", "actor_casey"],
+      "approvals": ["actor_alex", "actor_blair"],
+      "sensitive_contributors": ["actor_casey"]
+    },
+    "expected": { "decision": "deny", "rule_ids": ["CRPP-ESCROW-003"] }
+  },
+  {
+    "id": "unrelated-participant-cannot-block",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "copy",
+      "context_kind": "separable_contribution",
+      "contributors": ["actor_alex"],
+      "objections": ["actor_unrelated"],
+      "provenance_interests": []
+    },
+    "expected": { "decision": "allow", "rule_ids": ["CRPP-ESCROW-004"] }
+  },
+  {
+    "id": "third-party-restriction-survives-unanimous-contributor-vote",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "copy",
+      "context_kind": "third_party",
+      "affected_contributors": ["actor_alex", "actor_blair"],
+      "approvals": ["actor_alex", "actor_blair"],
+      "third_party_authorized": false
+    },
+    "expected": { "decision": "deny", "rule_ids": ["CRPP-THIRD-001"] }
+  },
+  {
+    "id": "read-grant-does-not-imply-training",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "train",
+      "context_kind": "joint",
+      "grant": {
+        "operations": ["read"],
+        "starts_at": "2026-08-01T00:00:00Z",
+        "expires_at": "2026-09-01T00:00:00Z",
+        "revoked": false
+      },
+      "evaluated_at": "2026-08-19T00:00:00Z"
+    },
+    "expected": { "decision": "deny", "rule_ids": ["CRPP-GRANT-003"] }
+  },
+  {
+    "id": "expired-grant-is-denied",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "invoke",
+      "context_kind": "joint",
+      "grant": {
+        "operations": ["invoke"],
+        "starts_at": "2026-07-01T00:00:00Z",
+        "expires_at": "2026-08-01T00:00:00Z",
+        "revoked": false
+      },
+      "evaluated_at": "2026-08-19T00:00:00Z"
+    },
+    "expected": { "decision": "deny", "rule_ids": ["CRPP-GRANT-002"] }
+  },
+  {
+    "id": "valid-scoped-invocation-is-allowed",
+    "input": {
+      "requester_id": "actor_alex",
+      "operation": "invoke",
+      "context_kind": "joint",
+      "affected_contributors": ["actor_alex", "actor_blair"],
+      "approvals": ["actor_alex", "actor_blair"],
+      "grant": {
+        "operations": ["invoke"],
+        "starts_at": "2026-08-01T00:00:00Z",
+        "expires_at": "2026-09-01T00:00:00Z",
+        "revoked": false,
+        "remaining_uses": 2
+      },
+      "evaluated_at": "2026-08-19T00:00:00Z"
+    },
+    "expected": { "decision": "allow", "rule_ids": ["CRPP-GRANT-002", "CRPP-ESCROW-005"] }
+  }
+]

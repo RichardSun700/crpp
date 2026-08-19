@@ -1,0 +1,15 @@
+{
+  "schema": "access-grant",
+  "expected_rule_id": "CRPP-GRANT-001",
+  "data": {
+    "grant_id": "grant_synthetic_invalid_001",
+    "protocol_version": "0.1.0-draft.1",
+    "grantor_ids": ["actor_alex"],
+    "grantee_id": "actor_blair",
+    "scope": ["joint_synthetic_001"],
+    "operation": "invoke",
+    "purpose": "synthetic-follow-up",
+    "starts_at": "2026-08-19T00:00:00Z",
+    "secret_debug_value": "SYNTHETIC-SECRET"
+  }
+}
