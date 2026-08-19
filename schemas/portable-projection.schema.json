@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/portable-projection.schema.json",
+  "title": "CRPP Portable Projection",
+  "x-crpp-rule-ids": ["CRPP-PROJECTION-001", "CRPP-PROJECTION-002", "CRPP-PROJECTION-003", "CRPP-PROJECTION-004", "CRPP-PROJECTION-005", "CRPP-PROJECTION-006"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["projection_id", "protocol_version", "beneficiary_id", "capability_category", "content", "source_commitment", "generated_at", "policy_version", "state", "checks", "allowed_operations"],
+  "properties": {
+    "projection_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "beneficiary_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "capability_category": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "content": { "type": "string", "minLength": 1, "maxLength": 50000 },
+    "source_commitment": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "generated_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "policy_version": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "state": { "enum": ["candidate", "quarantined", "approved", "revoked"] },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "status"],
+        "properties": {
+          "check_id": { "type": "string", "minLength": 3, "maxLength": 100 },
+          "status": { "enum": ["pass", "fail", "unavailable", "indeterminate"] },
+          "attestation_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" }
+        }
+      }
+    },
+    "allowed_operations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/operation" }
+    },
+    "review_attestation_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "revocation_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "extensions": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "state": { "const": "approved" } }, "required": ["state"] },
+      "then": {
+        "properties": {
+          "checks": {
+            "type": "array",
+            "not": {
+              "type": "array",
+              "contains": {
+                "type": "object",
+                "properties": { "status": { "enum": ["fail", "unavailable", "indeterminate"] } },
+                "required": ["status"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

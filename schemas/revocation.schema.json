@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/revocation.schema.json",
+  "title": "CRPP Revocation",
+  "x-crpp-rule-ids": ["CRPP-REVOCATION-001", "CRPP-REVOCATION-002", "CRPP-REVOCATION-003"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["revocation_id", "protocol_version", "revoker_id", "target_ids", "operations", "effective_at", "reason_code", "signature"],
+  "properties": {
+    "revocation_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "revoker_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "target_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" } },
+    "operations": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/operation" } },
+    "effective_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "reason_code": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "signature": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/signature" },
+    "extensions": { "type": "object" }
+  }
+}

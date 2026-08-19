@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/context-object.schema.json",
+  "title": "CRPP Context Object",
+  "x-crpp-rule-ids": ["CRPP-CORE-001", "CRPP-AUDIT-002"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["object_id", "revision", "protocol_version", "content_commitment", "authority_domains", "purpose", "creator_id", "contributor_ids", "agreement_basis", "permitted_operations", "created_at"],
+  "properties": {
+    "object_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "revision": { "type": "integer", "minimum": 1 },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "content_commitment": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "authority_domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/authority_domain" }
+    },
+    "purpose": { "type": "string", "minLength": 3, "maxLength": 200 },
+    "creator_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "contributor_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" }
+    },
+    "affected_contributor_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" }
+    },
+    "agreement_basis": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": false, "required": ["agreement_id"], "properties": { "agreement_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" } } },
+        { "type": "object", "additionalProperties": false, "required": ["default_rule_id"], "properties": { "default_rule_id": { "type": "string", "pattern": "^CRPP-DEFAULT-[0-9]{3}$" } } }
+      ]
+    },
+    "permitted_operations": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/operation" }
+    },
+    "provenance": {
+      "type": "array",
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/provenance_edge" }
+    },
+    "created_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "retention_until": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "extensions": { "type": "object" }
+  }
+}

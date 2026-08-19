@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/attestation.schema.json",
+  "title": "CRPP Attestation",
+  "x-crpp-rule-ids": ["CRPP-PROJECTION-003", "CRPP-AUDIT-002"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["attestation_id", "protocol_version", "attester_id", "subject_id", "claim", "evidence_commitment", "created_at", "signature"],
+  "properties": {
+    "attestation_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "attester_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "subject_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "claim": { "type": "string", "minLength": 3, "maxLength": 500 },
+    "evidence_commitment": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "created_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "signature": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/signature" },
+    "extensions": { "type": "object" }
+  }
+}

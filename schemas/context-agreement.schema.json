@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/context-agreement.schema.json",
+  "title": "CRPP Context Agreement",
+  "x-crpp-rule-ids": ["CRPP-AGREEMENT-001", "CRPP-AGREEMENT-002", "CRPP-AGREEMENT-003"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["agreement_id", "protocol_version", "project_id", "participants", "purposes", "effective_at", "operations", "default_domains", "signatures"],
+  "properties": {
+    "agreement_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "project_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "participants": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/actor" }
+    },
+    "purposes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3, "maxLength": 200 }
+    },
+    "effective_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/operation" }
+    },
+    "default_domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/authority_domain" }
+    },
+    "signatures": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/signature" }
+    },
+    "supersedes": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "extensions": { "type": "object" }
+  }
+}

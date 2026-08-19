@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/joint-context.schema.json",
+  "title": "CRPP Joint Context",
+  "x-crpp-rule-ids": ["CRPP-ESCROW-001", "CRPP-ESCROW-002", "CRPP-ESCROW-003", "CRPP-ESCROW-004", "CRPP-ESCROW-005"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["joint_context_id", "protocol_version", "object_ids", "affected_contributor_ids", "escrow_controller_id", "default_policy", "allowed_output_operations", "created_at"],
+  "properties": {
+    "joint_context_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "object_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" } },
+    "affected_contributor_ids": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" } },
+    "third_party_controller_ids": { "type": "array", "uniqueItems": true, "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" } },
+    "escrow_controller_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "default_policy": { "const": "deny-raw-copy" },
+    "allowed_output_operations": { "type": "array", "uniqueItems": true, "items": { "enum": ["read", "invoke", "project"] } },
+    "created_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "extensions": { "type": "object" }
+  }
+}

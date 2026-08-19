@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://crpp.dev/schema/0.1/audit-event.schema.json",
+  "title": "CRPP Audit Event",
+  "x-crpp-rule-ids": ["CRPP-AUDIT-001", "CRPP-AUDIT-002", "CRPP-AUDIT-003"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "protocol_version", "event_type", "actor_id", "object_ids", "decision", "rule_ids", "occurred_at", "previous_event_commitment", "event_commitment"],
+  "properties": {
+    "event_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "protocol_version": { "const": "0.1.0-draft.1" },
+    "event_type": { "enum": ["create", "classify", "project", "quarantine", "review", "grant", "invoke", "deny", "revoke", "export"] },
+    "actor_id": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" },
+    "object_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/identifier" } },
+    "decision": { "enum": ["allow", "deny", "quarantine", "record"] },
+    "rule_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^CRPP-[A-Z]+-[0-9]{3}$" } },
+    "reason_code": { "type": "string", "minLength": 3, "maxLength": 100 },
+    "occurred_at": { "$ref": "https://crpp.dev/schema/0.1/common.schema.json#/$defs/timestamp" },
+    "previous_event_commitment": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" },
+    "event_commitment": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "extensions": { "type": "object" }
+  }
+}
