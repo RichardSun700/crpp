@@ -89,6 +89,16 @@ export async function decideScenario(input) {
     return result("quarantine", ["CRPP-PROJECTION-004"]);
   }
 
+  if (
+    input.context_kind === "projection"
+    && input.projection_checks?.length > 0
+    && input.projection_checks.every((status) => status === "pass")
+    && input.contributors?.length === 1
+    && input.contributors[0] === input.requester_id
+  ) {
+    return result("allow", ["CRPP-DEFAULT-003"]);
+  }
+
   if (input.context_kind === "third_party" && input.third_party_authorized !== true) {
     return result("deny", ["CRPP-THIRD-001"]);
   }

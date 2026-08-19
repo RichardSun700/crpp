@@ -1,0 +1,26 @@
+{
+  "synthetic": true,
+  "actors": ["actor_alex", "org_example"],
+  "company_record": {
+    "authority_domain": "company",
+    "retained_by": "org_example",
+    "content_commitment": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "portable_projection": {
+    "beneficiary_id": "actor_alex",
+    "capability": "Evaluate assumptions, evidence, reversibility, and affected actors before selecting an option.",
+    "contains_company_facts": false
+  },
+  "request": {
+    "agreement": null,
+    "requester_id": "actor_alex",
+    "operation": "project",
+    "context_kind": "projection",
+    "contributors": ["actor_alex"],
+    "projection_checks": ["pass", "pass", "pass", "pass"]
+  },
+  "expected": {
+    "decision": "allow",
+    "rule_ids": ["CRPP-DEFAULT-003"]
+  }
+}

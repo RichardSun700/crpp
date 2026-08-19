@@ -1,0 +1,25 @@
+{
+  "synthetic": true,
+  "actors": ["actor_alex", "actor_blair", "escrow_example"],
+  "request": {
+    "requester_id": "actor_alex",
+    "operation": "invoke",
+    "context_kind": "joint",
+    "affected_contributors": ["actor_alex", "actor_blair"],
+    "approvals": ["actor_alex", "actor_blair"],
+    "grant": {
+      "operations": ["invoke"],
+      "starts_at": "2026-08-01T00:00:00Z",
+      "expires_at": "2026-09-01T00:00:00Z",
+      "revoked": false,
+      "remaining_uses": 2,
+      "copy_allowed": false,
+      "training_allowed": false
+    },
+    "evaluated_at": "2026-08-20T00:00:00Z"
+  },
+  "expected": {
+    "decision": "allow",
+    "rule_ids": ["CRPP-GRANT-002", "CRPP-ESCROW-005"]
+  }
+}

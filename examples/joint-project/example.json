@@ -1,0 +1,16 @@
+{
+  "synthetic": true,
+  "actors": ["actor_alex", "actor_blair", "org_example"],
+  "request": {
+    "agreement": null,
+    "requester_id": "actor_alex",
+    "operation": "copy",
+    "context_kind": "joint",
+    "contributors": ["actor_alex", "actor_blair"],
+    "claimed_primary_contributor": "actor_alex"
+  },
+  "expected": {
+    "decision": "deny",
+    "rule_ids": ["CRPP-DEFAULT-004"]
+  }
+}

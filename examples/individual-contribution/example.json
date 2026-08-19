@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "actors": ["actor_alex", "org_example"],
+  "request": {
+    "agreement": null,
+    "requester_id": "actor_alex",
+    "operation": "copy",
+    "context_kind": "separable_contribution",
+    "contributors": ["actor_alex"]
+  },
+  "expected": {
+    "decision": "allow",
+    "rule_ids": ["CRPP-DEFAULT-002"]
+  }
+}

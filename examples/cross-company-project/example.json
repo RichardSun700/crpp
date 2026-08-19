@@ -1,0 +1,16 @@
+{
+  "synthetic": true,
+  "actors": ["actor_alex", "actor_blair", "org_example_a", "org_example_b", "controller_customer"],
+  "request": {
+    "requester_id": "actor_alex",
+    "operation": "copy",
+    "context_kind": "third_party",
+    "affected_contributors": ["actor_alex", "actor_blair"],
+    "approvals": ["actor_alex", "actor_blair"],
+    "third_party_authorized": false
+  },
+  "expected": {
+    "decision": "deny",
+    "rule_ids": ["CRPP-THIRD-001"]
+  }
+}
