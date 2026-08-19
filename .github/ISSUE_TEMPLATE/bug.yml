@@ -1,0 +1,31 @@
+name: Conformance defect
+description: Report a reproducible schema, runner, or documentation defect using synthetic data.
+title: "[Defect]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Never submit real employer, worker, customer, patient, or user context.
+  - type: input
+    id: version
+    attributes:
+      label: CRPP version
+      placeholder: 0.1.0-draft.1
+    validations:
+      required: true
+  - type: input
+    id: rule
+    attributes:
+      label: Rule ID
+  - type: textarea
+    id: synthetic
+    attributes:
+      label: Minimal synthetic reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true

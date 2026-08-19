@@ -1,0 +1,24 @@
+title: "[Idea] "
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: Use synthetic examples only. Do not disclose real employment, customer, patient, or personal context.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and affected actors
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed protocol behavior
+    validations:
+      required: true
+  - type: textarea
+    id: power
+    attributes:
+      label: Power, minority-rights, and third-party impact
+    validations:
+      required: true
