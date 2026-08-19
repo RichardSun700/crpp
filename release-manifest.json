@@ -1,0 +1,22 @@
+{
+  "protocol": "CRPP",
+  "version": "0.1.0-draft.1",
+  "generated_at": "2026-08-19T16:20:23Z",
+  "hash_algorithm": "sha256",
+  "artifacts": {
+    "SPEC.md": "08dec3c7cf51083a0cb74fc726f4a27f6cd49a100b3aeb78d74c43511ec97f61",
+    "SPEC.zh-CN.md": "625f047b7cfa744a857aed458e21f9f95eaf4d6dd7861218321ea1e3ce50f277",
+    "schemas/context-agreement.schema.json": "b2b2345fc79716cc7e21df8d4581495e2bb56c029eb262f6dcc87f62567e5ba2",
+    "schemas/context-object.schema.json": "a18fcaa7005a5917fb430a6ba4c5b2f6335fdc885c47ca46c78d3daa52ef086e",
+    "schemas/portable-projection.schema.json": "10e8af2a4b4a24d5623c1e887128fa85fa1d208bc8319beed4722a1d8aa5c397",
+    "schemas/joint-context.schema.json": "0440ddebee91310ddf869517cd5a4975e79eaa5f2dd869f7224912edce0d2c06",
+    "schemas/access-grant.schema.json": "abe931f350bdc56c9ff9fff87e2e0e002fd2e03b741012838b84eac30b19efd5",
+    "schemas/attestation.schema.json": "c5568293cc58000ea361e92ec921ce2a33daffdae3de66cf3ac25b8a9a6937f0",
+    "schemas/revocation.schema.json": "5c92f1ead923ea809ebbd389f149c0920fa48d2bd7b1390203d5035db6bd8bb4",
+    "schemas/audit-event.schema.json": "4bd25198b5f1b3efc2155779413274e21c761a4cf4ef0bce0893d4ef60e1f023"
+  },
+  "remote_evidence": {
+    "conformance_run": "https://github.com/RichardSun700/crpp/actions/runs/32275179079",
+    "codeql_run": "https://github.com/RichardSun700/crpp/actions/runs/32275179070"
+  }
+}
