@@ -1,0 +1,17 @@
+name: Translation difference
+description: Report a difference between normative English and a translation.
+title: "[Translation]: "
+labels: [translation]
+body:
+  - type: input
+    id: rule
+    attributes:
+      label: Rule ID
+    validations:
+      required: true
+  - type: textarea
+    id: difference
+    attributes:
+      label: Difference and proposed wording
+    validations:
+      required: true
