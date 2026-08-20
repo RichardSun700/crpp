@@ -18,10 +18,16 @@
 
 ## Schema and conformance changes
 
+## Reference and independent implementations
+
+## Test vectors
+
 ## Translation impact
 
 ## Compatibility and migration
 
 ## Alternatives rejected
+
+## Serious objections and responses
 
 ## Disclosure of interests

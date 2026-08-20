@@ -1,7 +1,7 @@
 {
   "name": "@crpp/conformance",
   "version": "0.1.0-draft.1",
-  "description": "Conformance suite for the Context Rights & Portability Protocol",
+  "description": "Open protocol for separating company facts, portable capability, joint context, and third-party rights",
   "type": "module",
   "private": true,
   "engines": {
@@ -11,7 +11,11 @@
     "test": "node --test conformance/runner/*.test.mjs",
     "test:coverage": "node --test --experimental-test-coverage conformance/runner/*.test.mjs",
     "validate": "node conformance/runner/cli.mjs",
-    "lint": "node scripts/lint.mjs"
+    "lint": "node scripts/lint.mjs",
+    "demo": "node reference/cli.mjs demo/employee-exit/input.json"
+  },
+  "bin": {
+    "crpp": "reference/cli.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",

@@ -1,81 +1,87 @@
-# Context Rights & Portability Protocol
+# 当工作变成 AI 记忆，它属于谁？
 
-**CRPP 是一个开放、厂商中立的协议，用于确定哪些工作 Context 留在公司、个人可以保留哪些可携带能力，以及项目结束后如何治理多人共同产生的 Context。**
+## CRPP——可携带智能开放协议
 
-> 状态：`0.1.0-draft.1`。CRPP 是实验性的技术和治理协议，不是法律意见、认证，也不能替代劳动、隐私、保密、知识产权或数据处理协议。
+**公司保留业务事实，个人携带安全、可验证的能力；共同 Context 按生成前确定的规则治理。**
 
-[English](README.md) · [中文规范草案](SPEC.zh-CN.md) · [治理](GOVERNANCE.md) · [参与贡献](CONTRIBUTING.md)
+> **带走能力，不带走秘密。**
 
-## 要解决的问题
+[阅读白皮书](WHITEPAPER.zh-CN.md) · [运行演示](QUICKSTART.md) · [采用 CRPP](ADOPT.md) · [English](README.md)
 
-AI 系统越来越依赖累积的 Context：决策、失败路径、关系、工作方法、判断模式和工具调度技能。当前通常把这些内容当作无法拆分的一堆数据：
+> 状态：`0.1.0-draft.1`。CRPP 是实验性的技术与治理协议，不构成法律意见、认证，也不能替代劳动、隐私、保密、知识产权或数据处理协议。
 
-- 公司保存全部资料，个人失去在工作中形成的能力连续性；或者
-- 个人复制工作资料，泄露公司秘密、其他贡献者或第三方数据。
+## 核心冲突
 
-CRPP 把 Context 分为四个 authority domain，并在生成时写入机器可读的规则：
+AI 正在把普通工作变成持续存在的记忆：决策、被否决的方案、关系、操作方法、判断模式和工具调用能力。
 
-| Domain | 默认作用 |
-|---|---|
-| `company` | 合法、授权业务范围内的完整记录 |
-| `personal` | 私人 Context、可分割的个人贡献和合规能力投影 |
-| `joint` | 通过托管进行多方治理的不可分割 Context |
-| `third_party` | 受客户、用户、患者、合作方或法律独立约束的 Context |
+今天，这些记忆通常被当成一个不可分割的数据堆：
 
-## 核心默认规则
+- 公司保留全部内容，个人失去在工作中形成的能力连续性；或者
+- 个人复制工作材料，暴露公司的秘密、合作同事、客户或受监管数据。
 
-权利应当在 Context **产生之前或产生当时**约定。
-
-没有事前约定时：
-
-1. 公司保留其完整、授权的业务记录；
-2. 每个人只保留自己的可分割原始贡献，以及由该贡献生成的合规能力投影；
-3. 不可分割的共同 Context 进入 Joint Context Escrow，不自动复制给任何参与者；
-4. 后续永久携带、限时调用或条件租用，需要受影响贡献者和独立第三方控制者进行范围化授权；
-5. 读取、复制、模型训练、公开、商业化和再次授权是彼此独立的权限。
-
-默认规则不会让自称“主要贡献者”的人单方面占有共同 Context。
-
-## 从生成时开始可携带
-
-去标识化不能等到离职或导出时才做。授权工作事件在生成阶段被路由：
+CRPP 提出第三种选择：在 Context 生成时就分离业务事实与可携带能力，记录每个对象的参与者与受影响者，并让后续调用可以被机器验证。
 
 ```text
-授权工作事件
-  -> 约定与目的解析
-  -> 来源与 Authority 分类
+授权的工作事件
+  -> Agreement 与目的解析
+  -> 来源与权威域分类
   -> 公司完整记录
-  -> 每位参与者的可携带能力投影
-       -> 泄漏检查 -> 隔离/复核 -> 个人域
-  -> 共同 Context 托管
+  -> 每位合格参与者的安全 Portable Projection
+       -> 泄漏检查 -> 隔离或批准
+  -> 不可分离的 Joint Context Escrow
   -> 第三方保护层
-  -> 签名 Manifest 与审计事件
+  -> 审计事件与内容承诺
 ```
 
-可携带投影描述可复用的能力——方法、检查项、决策模式和工具调度——而不是公司机密事实的摘要。
+## 四个权威域
 
-## 当前草案包含
+| 权威域 | 默认作用 |
+|---|---|
+| `company` | 经授权的完整业务记录 |
+| `personal` | 私人 Context、可分离贡献与合规能力投影 |
+| `joint` | 通过托管治理的不可分离多人 Context |
+| `third_party` | 受客户、用户、患者、合作方或法律独立限制的 Context |
 
-- 英文规范主版本和完整中文翻译；
-- Agreement、Context Object、Projection、Joint Context、Grant、Attestation、Revocation 和 Audit Event 的 JSON Schema；
-- 合成的 valid/invalid 合规场景；
-- 可重复执行的 conformance runner；
-- 通过 Context Enhancement Proposal（CEP）进行公开治理。
+权利应当在 Context **生成前或生成时**约定。读取、复制、投影、调用、训练、发布、商业化和转授权是彼此独立的权限。
 
-参考 policy engine、生成时投影管线、Joint Context Escrow 和 MCP/REST 适配器将在核心草案验证后实现。
+**没有事前约定，不等于任何一方可以全部拿走。** 公司保留经授权的业务记录；每个人只保留自己的可分离贡献和合规能力投影；不可分离的共同 Context 不会自动复制给公司、自称的“主要贡献者”或所有参与人。
 
-## 如何参与
+## 运行参考演示
 
-- 早期概念和规范问题进入 Discussions；
-- 明确缺陷、翻译差异和合规问题进入 Issues；
-- 新协议对象、权利变化、breaking change 或治理变化必须提交 CEP；
-- Schema 变化必须同时提交规范说明和 valid/invalid fixtures。
+演示只使用合成数据，把一个工作事件路由为公司记录、两份能力投影、共同 Context 托管记录和可验证的审计链。
 
-参见 [CONTRIBUTING.md](CONTRIBUTING.md)。所有公开示例必须使用合成数据，禁止包含雇主、员工、客户、患者或用户的真实资料。
+```bash
+npm ci
+npm run demo
+```
+
+这个演示不声称已经实现生产级去标识化或法律合规；它是一条供协议审阅与独立实现参考的确定性流程。
+
+## 协议组成
+
+- [白皮书](WHITEPAPER.zh-CN.md)：协调问题、设计主张、激励与边界。
+- [英文规范](SPEC.md)与[中文规范](SPEC.zh-CN.md)：实现必须遵守的规则。
+- [JSON Schema](schemas/README.md)：机器可读的协议对象。
+- [一致性套件](conformance/README.md)：有效、无效和公平性场景。
+- [参考流程](reference/README.md)：最小可运行代码。
+- [Context Enhancement Proposal](proposals/README.md)：公开变更流程。
+- [威胁模型](THREAT_MODEL.md)：受保护资产、攻击者和必要控制。
+- [治理规则](GOVERNANCE.md)：决策权与中立托管路径。
+
+## 参与方式
+
+- 早期概念和规范问题进入 Discussions。
+- 范围明确的缺陷、翻译差异和一致性问题进入 Issues。
+- 新协议对象、权利变化、破坏性变化和治理变化必须使用 CEP。
+- 每项规范性 Schema 变化必须同时提供规范文字以及有效/无效测试。
+- 公开示例只能使用合成数据，不得包含雇主、员工、客户、患者或用户的真实 Context。
+
+从 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [CEP 注册表](proposals/README.md)开始。
 
 ## 许可证
 
-- 规范、图示、说明性示例和翻译：[CC BY 4.0](LICENSE-SPEC)
-- Schema、合规测试和参考代码：[Apache License 2.0](LICENSE-CODE)
+- Schema、一致性测试与参考代码：Apache License 2.0。
+- 规范、图表、解释性示例、白皮书与翻译：CC BY 4.0。
+- 机器可读分配见 [LICENSE](LICENSE) 与 [REUSE.toml](REUSE.toml)。
 
-Memova 是本仓库的发起参考参与者，但没有永久否决权；CRPP 不依赖 Memova 或任何其他厂商。
+Memova 是 CRPP 的发起参考参与者，但不拥有永久席位或否决权；CRPP 不依赖 Memova 或任何单一厂商。

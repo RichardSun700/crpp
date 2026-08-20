@@ -1,0 +1,46 @@
+version = 1
+
+[[annotations]]
+path = [
+  "schemas/**",
+  "conformance/**",
+  "reference/**",
+  "scripts/**",
+  ".github/**",
+  ".editorconfig",
+  ".gitattributes",
+  ".gitignore",
+  "package.json",
+  "package-lock.json",
+  "release-manifest.json"
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CRPP contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+  "SPEC.md",
+  "SPEC.zh-CN.md",
+  "WHITEPAPER.md",
+  "WHITEPAPER.zh-CN.md",
+  "README.md",
+  "README.zh-CN.md",
+  "QUICKSTART.md",
+  "ADOPT.md",
+  "IMPLEMENTATIONS.md",
+  "GOVERNANCE.md",
+  "CHARTER.md",
+  "CODE_OF_CONDUCT.md",
+  "CONTRIBUTING.md",
+  "SECURITY.md",
+  "THREAT_MODEL.md",
+  "CHANGELOG.md",
+  "proposals/**",
+  "demo/**",
+  "examples/**",
+  "translations/**"
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 CRPP contributors"
+SPDX-License-Identifier = "CC-BY-4.0"

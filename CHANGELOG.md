@@ -1,6 +1,13 @@
 # Changelog
 
-## 0.1.0-draft.1 — Unreleased
+## Unreleased
+
+- Add a human-readable bilingual public entry and aligned whitepapers.
+- Add a deterministic synthetic reference flow and local CLI.
+- Define adoption levels, implementation evidence, and the CEP lifecycle.
+- Clarify machine-readable Apache-2.0 and CC-BY-4.0 file assignments.
+
+## 0.1.0-draft.1 — 2026-08-19
 
 - Define the four authority domains.
 - Define ex-ante agreements and conservative no-agreement defaults.
