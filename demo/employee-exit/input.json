@@ -1,0 +1,38 @@
+{
+  "synthetic": true,
+  "event_id": "evt_synthetic_exit_001",
+  "agreement_id": "agr_synthetic_joint_001",
+  "occurred_at": "2026-08-20T00:00:00Z",
+  "organization_id": "org_example",
+  "creator_id": "actor_alex",
+  "contributor_ids": [
+    "actor_alex",
+    "actor_blair"
+  ],
+  "purpose": "synthetic product decision record",
+  "escrow_controller_id": "escrow_example",
+  "company_facts": {
+    "project": "Project Juniper",
+    "customer_reference": "customer-red-17",
+    "approved_budget": "budget-424242",
+    "decision": "The organization selected a phased launch after reviewing commercial and operational constraints."
+  },
+  "portable_capabilities": [
+    {
+      "beneficiary_id": "actor_alex",
+      "capability_category": "decision-quality",
+      "content": "Can frame an ambiguous launch decision as reversible stages, explicit thresholds, and named failure conditions."
+    },
+    {
+      "beneficiary_id": "actor_blair",
+      "capability_category": "risk-review",
+      "content": "Can convert cross-functional concerns into a review sequence that separates evidence, assumptions, owners, and escalation triggers."
+    }
+  ],
+  "joint_context_summary": "Two contributors shaped the decision sequence; the inseparable interaction remains governed rather than copied.",
+  "restricted_markers": [
+    "Project Juniper",
+    "customer-red-17",
+    "budget-424242"
+  ]
+}

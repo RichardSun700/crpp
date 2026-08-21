@@ -15,8 +15,12 @@ No company may hold more than two seats. Memova has no permanent seat or veto.
 ## Decisions
 
 - Normative rights changes, protocol objects, breaking changes, and governance changes require a Context Enhancement Proposal (CEP).
-- A normal CEP remains open for public review for at least 14 calendar days.
+- CEPs follow the public lifecycle in [`proposals/README.md`](proposals/README.md): Idea, Draft, Review, Last Call, Accepted, and Implemented, with explicit terminal states.
+- A normal CEP remains in Last Call for at least 14 calendar days at an identified immutable revision.
+- Decisions seek documented rough consensus rather than a bare vote. Serious objections and minority positions remain in the record.
+- A CEP author may not unilaterally accept their own proposal. Conflicted members disclose the conflict and recuse when appropriate.
 - The TSC records votes, rationales, abstentions, and conflicts of interest.
+- Major interoperability changes should demonstrate two independent implementations before reaching Implemented status.
 - Security fixes may be handled privately until coordinated disclosure is safe.
 - Published versions are immutable. Corrections use errata and a new patch version.
 
